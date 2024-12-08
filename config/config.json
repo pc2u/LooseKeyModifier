@@ -1,0 +1,9 @@
+{
+  "relativeProbabilityThreshold": 3,
+  "relativeProbabilitymultiplier": 20,
+  "LooseKeyPileProbability": 0.2,
+  "AlterKeyCardProbability": true,
+  "LooseKeycardProbability": 0.02,
+  "drawerStaticRelativeProbability": 1658,
+  "jacketStaticRelativeProbability": 829
+}
