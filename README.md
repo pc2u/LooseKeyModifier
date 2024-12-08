@@ -1,66 +1,36 @@
-# Welcome to the SPT Modding Project
+# LooseKeyModifier
+LooseKeyModifier for SPTarkov, Originally made by Kaeno 
 
-This project is designed to streamline the initial setup process for building and creating mods in the SPT environment. Follow this guide to set up your environment efficiently.
+A truly special thank you to Kaeno for originally making this mod, also thank you to Echo55 and Ru Kira for you help with teaching me the basics of Typescript, and helping me with updating the codebase.
 
-## **Table of Contents**
-- [NodeJS Setup](#nodejs-setup)
-- [IDE Setup](#ide-setup)
-- [Workspace Configuration](#workspace-configuration)
-- [Environment Setup](#environment-setup)
-- [Essential Concepts](#essential-concepts)
-- [Coding Guidelines](#coding-guidelines)
-- [Distribution Guidelines](#distribution-guidelines)
+Config Settings and what they do.
 
-## **NodeJS Setup**
 
-Before you begin, ensure to install NodeJS version `v20.11.1`, which has been tested thoroughly with our mod templates and build scripts. Download it from the [official NodeJS website](https://nodejs.org/).
+-- Loose Loot Keys --
 
-After installation, it's advised to reboot your system.
+relativeProbabilityThreshold : 3 Anything lower than relativeProbabilityThreshold Will be modified by the Multiplier below. Should probably leave this alone if you dont know what this means.
 
-## **IDE Setup**
+relativeProbabilitymultiplier: 20 Multiplier mentioned above
 
-For this project, you can work with either [VSCodium](https://vscodium.com/) or [VSCode](https://code.visualstudio.com/). However, we strongly recommend using VSCode, as all development and testing have been carried out using this IDE, ensuring a smoother experience and compatibility with the project setups. Either way, we have a prepared a workspace file to assist you in setting up your environment.
+LooseKeyPileProbability: 0.10, This alters spawn point probabilites lower than this setting and leaving higher probabilities alone. (Loose Loot Spawn Point)
 
-## **Workspace Configuration**
 
-With NodeJS and your chosen IDE ready, initiate the `mod.code-workspace` file using your IDE:
+-- Loose Loot KeyCard --
 
-> File -> Open Workspace from File...
+AlterKeyCardProbability: true, If enabled keycard spawn probabilities will be changed
 
-Upon project loading, consider installing recommended plugins like the ESLint plugin.
+LooseKeycardProbability: 0.02 This alters spawn point probabilites lower than this setting and leaving higher probabilities alone. (Loose Loot Spawn Point)
 
-## **Environment Setup**
 
-An automated task is available to configure your environment for Typescript utilization:
+-- Container Keys --
 
-> Terminal -> Run Task... -> Show All Tasks... -> npm: install
+drawerStaticRelativeProbability: 1658 This value is based of the chance of the "Yotota Key" Spawning inside of a drawer anything below this value will get changed to the number. I have halved the value so keys are half as likely to spawn Yotota Key. Based off 3.7 loot values mileage may vary
 
-Note: Preserve the `node_modules` folder as it contains necessary dependencies for Typescript and other functionalities.
 
-## **Essential Concepts**
+jacketStaticRelativeProbability: 829 This value is based of the chance of the "Yotota Key" Spawning inside of a jacket anything below this value will get changed to the number. Based off 3.7 loot values mileage may vary
 
-Prioritize understanding Dependency Injection and Inversion of Control, the architectural principles SPT adopts. Comprehensive guidelines will be available on the hub upon release.
 
-Some resources to get you started:
- - [A quick intro to Dependency Injection](https://www.freecodecamp.org/news/a-quick-intro-to-dependency-injection-what-it-is-and-when-to-use-it-7578c84fa88f/)
- - [Understanding Inversion of Control (IoC) Principle](https://medium.com/@amitkma/understanding-inversion-of-control-ioc-principle-163b1dc97454)
+Due to the way the LooseLoot Generation happens on map start there is also a chance that it will never pick that spawnpoint pile even when lootPileProbability is at 1(100%) to get around this increase your loose loot map multiplier with ur aio of choice.
 
-## **Coding Guidelines**
 
-Focus your mod development around the `mod.ts` file. In the `package.json` file, only alter these properties: `"name"`, `"version"`, `"sptVersion"`, `"loadBefore"`, `"loadAfter"`, `"incompatibilities"`, `"isBundleMod"`, `"author"`, and `"license"`.
-
-New to Typescript? Find comprehensive documentation on the [official website](https://www.typescriptlang.org/docs/).
-
-## **Distribution Guidelines**
-
-Automated tasks are set up to bundle all necessary files for your mod to function in SPT:
-
-> Terminal -> Run Task... -> Show All Tasks... -> npm: build
-
-The ZIP output, located in the `dist` directory, contains all required files. Ensure all files are included and modify the `.buildignore` file as needed. This ZIP file is your uploadable asset for the hub.
-
-## **Conclusion**
-
-With this setup, you're ready to begin modding with SPT. If you run into any trouble be sure to check out the [modding documentation on the hub](https://hub.sp-tarkov.com/doc/lexicon/66-modding/). If you really get stuck feel free to join us in the [#mods-development](https://discord.com/channels/875684761291599922/875803116409323562) official Discord channel.
-
-Build something awesome!
+Slight oversight. If the staticRelativeProbabilty is too high keys that are usually really rare in some containers might become super common be careful adjusting this number. Consider lowering it slot to compensate.
